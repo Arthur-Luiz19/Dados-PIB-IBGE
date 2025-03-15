@@ -9,17 +9,16 @@ body{
 }
 
 .background{
-  background-color: #F6F6F6;
+  background-color: #ECEFF1 ;
 }
 .container{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-self: center;
+  align-items: center; /* Centraliza horizontalmente */
   text-align: center;
   width: 80%;
-  height: 100%;
-  margin: 10px 0;
+  min-height: 100vh; /* Garante que o container ocupe toda a altura da viewport */
+  margin: 0 auto; /* Centraliza o container na página */
 
   & h2{
     font-size: 2em;
@@ -28,24 +27,26 @@ body{
   }
 }
 
-.grafico_container{
+.grafico_container {
   max-height: 500px;
-  padding: 10px;
+  padding: 10px; /* Aumenta o padding para melhor espaçamento */
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 10px 15px 15px rgba(0, 0, 0, 0.5);
   border-radius: 30px;
   background-color: white;
-  width: 100%; /* Ocupa toda a largura disponível */
-  overflow: hidden; /* Oculta a rolagem padrão */
+  width: 100%; /* Ocupa toda a largura do container */
+  box-sizing: border-box; /* Garante que o padding não altere a largura */
 }
 
 .table-container {
+  background-color: white;
   max-height: 400px; /* Altura máxima da tabela antes de ativar a rolagem */
   overflow-y: auto; /* Adiciona a barra de rolagem interna */
   border: 1px solid #ccc;
   border-radius: 20px;
+  width: 100%;
   box-shadow: 10px 15px 15px rgba(0,0,0,0.5);
 
 }
@@ -73,20 +74,19 @@ body{
   background: #80CAA7; /* Efeito ao passar o mouse */
 }
 
-.filtro_container{
+.filtro_container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-self: center;
+  align-items: center; /* Centraliza horizontalmente */
   text-align: center;
   width: 80%;
-  margin: 20px 0;
-  height: 100%;
+  margin: 20px auto; /* Centraliza o container na página */
+  min-height: 100%; /* Garante que o container ocupe toda a altura da viewport */
 
-  & h2{
-    color: #2c3e50;
-    font-size: 2em;
-    font-weight: bold;
+  & h2 {
+      color: #2c3e50;
+      font-size: 2em;
+      font-weight: bold;
   }
 }
 
@@ -95,25 +95,33 @@ body{
   overflow-y: auto;
   overflow-x: hidden;
   background: white;
-  border-radius: 15px;         /* Bordas mais suaves */
+  border-radius: 15px;
   padding: 20px;
-  margin: 30px auto;           /* Centralizar o container */ 
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsividade com grid */
-  gap: 20px;                   /* Espaçamento maior entre os itens */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra mais suave */
-  transition: all 0.3s ease;   /* Transições suaves */
+  margin: 30px auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 
-  & label{
-    font-size: 1.1em;             /* Aumenta a fonte para maior legibilidade */
-    font-weight: 500;             /* Font-weight um pouco mais leve */
-    gap: 10px;                    /* Espaçamento entre checkbox e texto */
-    transition: color 0.2s ease;
+  & label {
+      font-size: 1.1em;
+      font-weight: 500;
+      display: flex; /* Adiciona flexbox */
+      align-items: center; /* Alinha verticalmente */
+      gap: 5px; /* Reduz o gap */
+      transition: color 0.2s ease;
 
-    &:hover{
-      color: #6fa894;
-    }
+      &:hover {
+          color: #6fa894;
+      }
   }
+}
+
+/* Media query para telas menores */
+@media (max-width: 768px) {
+  .filtro {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Ajuste para telas menores */
+      gap: 5px; /* Reduz o gap em telas menores */
+  }
+}
 
   & input[type="checkbox"]{
     margin-right: 10px;
@@ -125,7 +133,7 @@ body{
       transform: scale(1.3);
     }
   }
-}
+
 
 
 
