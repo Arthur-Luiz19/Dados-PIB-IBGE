@@ -39,32 +39,57 @@ const FiltrarAnos = () => {
         localStorage.setItem("selectedYears", JSON.stringify(updatedYears));
     };
 
+    //Função marcar todos os anos
+    const handleSelectAll = (isChecked) => {
+        const allYears = availableYears.length > 0 ? availableYears : [];
+        const updatedYears = isChecked ? allYears : [];
+
+        setSelectedYears(updatedYears);
+        localStorage.setItem("selectedYears", JSON.stringify(updatedYears));
+    };
+
     return (
         <div>
             <Header />
             <div className="filtro_container">
                 <h2>Selecione os anos para análise</h2>
-
-                <div className="filtro w-[60%] md:w-[70%] lg:w-[100%] flex justify-center">
+    
+                <div className="filtro w-[60%] md:w-[70%] lg:w-[100%]">
                     {availableYears.length === 0 ? (
                         <p>Nenhum ano disponível.</p>
                     ) : (
-                        availableYears.map((year) => (
-                            <label key={year}>
+                        <div className="w-full">
+                            {/* Checkbox para marcar/desmarcar todos */}
+                            <label className="block mb-4">
                                 <input
                                     type="checkbox"
-                                    value={year}
-                                    checked={selectedYears.includes(year)}
-                                    onChange={(e) => handleCheckboxChange(e, year)}
+                                    onChange={(e) => handleSelectAll(e.target.checked)}
+                                    checked={selectedYears.length === availableYears.length && availableYears.length > 0}
                                 />
-                                {year}
+                                Marcar Todos
                             </label>
-                        ))
+    
+                            {/* Lista de checkboxes individuais */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3"> {/* Ajustado grid-cols */}
+                                {availableYears.map((year) => (
+                                    <label key={year} className="flex items-center">
+                                        <input
+                                            type="checkbox"
+                                            value={year}
+                                            checked={selectedYears.includes(year)}
+                                            onChange={(e) => handleCheckboxChange(e, year)}
+                                            className="mr-2"
+                                        />
+                                        {year}
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
                     )}
                 </div>
             </div>
         </div>
     );
-};
+}
 
 export default FiltrarAnos;
