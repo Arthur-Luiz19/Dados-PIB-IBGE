@@ -18,10 +18,10 @@ const Header = () => {
 
     return (
         <div>
-            <header className="bg-gray-800 py-4 shadow-md">
+            <header className="bg-[#FF9800] py-4 shadow-md">
                 <nav className="w-full flex flex-wrap justify-between items-center px-6">
                     {/* Título */}
-                    <Link className="text-4xl md:text-5xl lg:text-6xl text-white font-bold font_titulo" to="/">
+                    <Link className="text-4xl md:text-5xl lg:text-6xl text-[#b22222] font-bold font_titulo" to="/">
                         Dados PIB do IBGE
                     </Link>
 
@@ -37,7 +37,7 @@ const Header = () => {
                         </li>
                         <li>
                             <Link
-                                className={`${buttonClass} bg-green-500 text-white hover:bg-green-600`}
+                                className={`${buttonClass} bg-[#eb1919] text-white hover:bg-[#b22222]`}
                                 to={tabela.link}
                             >
                                 {tabela.label}

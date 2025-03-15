@@ -74,7 +74,15 @@ const PibChart = () => {
                 options={{
                     responsive: true,
                     plugins: {
-                        legend: { position: "top", labels: { font: { size: 13 } } },
+                        legend: {
+                            position: "top", labels: {
+                                padding: 10,
+                                boxHeight: 10,
+                                font: {
+                                    size: 13,
+                                },
+                            }
+                        },
                         title: {
                             display: true,
                             text: "PIB total e PIB per capita (em dólares)",
